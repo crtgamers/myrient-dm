@@ -1,0 +1,44 @@
+# Build Linux (AppImage + .deb) en GitHub Actions
+name: Compilar para Linux
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+  workflow_dispatch:
+
+jobs:
+  build-linux:
+    name: Linux (AppImage + .deb)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install libfuse2 (for AppImage)
+        run: sudo apt-get update && sudo apt-get install -y libfuse2
+
+      - name: Build Linux (AppImage + .deb)
+        run: npm run build:linux
+
+      - name: Upload AppImage
+        uses: actions/upload-artifact@v4
+        with:
+          name: myrient-dm-linux-AppImage
+          path: dist-electron/*.AppImage
+
+      - name: Upload .deb package
+        uses: actions/upload-artifact@v4
+        with:
+          name: myrient-dm-linux-deb
+          path: dist-electron/*.deb

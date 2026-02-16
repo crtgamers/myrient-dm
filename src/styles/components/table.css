@@ -1,0 +1,8 @@
+/**
+ * Tablas: tabla de archivos, tabla de descargas, columnas.
+ * Depende de tokens, reset-base, layout, utilities.
+ *
+ * Los bloques de tabla (Tabla Glassmorphic, Botones en tabla, Rediseño de columnas,
+ * Filas de descarga, etc.) siguen en components.css para mantener el orden de
+ * cascada con media queries. Se pueden extraer aquí en un refactor posterior.
+ */

@@ -1,0 +1,13 @@
+/**
+ * Componentes: tablas, paneles, modales, configuración, filtros, descargas, etc.
+ * Importa todos los fragmentos temáticos.
+ */
+@import './components/shared.css';
+@import './components/folders.css';
+@import './components/queue.css';
+@import './components/files.css';
+@import './components/downloads.css';
+@import './components/toasts.css';
+@import './components/filters.css';
+@import './components/logs.css';
+@import './components/responsive.css';

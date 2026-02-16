@@ -1,0 +1,46 @@
+# Dependencies
+node_modules/
+
+# Build outputs
+dist/
+dist-electron/
+
+# Testing
+coverage/
+*.test.db
+/tmp/test-*
+_test_/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Database
+*.db.backup.*
+*.db-wal
+*.db-shm
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Environment (secretos / overrides locales)
+.env
+.env.local
+.env.*.local
+
+# Base de datos comprimida (generada por scripts/build-db-7z.mjs; opcional si no la subes)
+# resources/*.7z
+resources/*.db

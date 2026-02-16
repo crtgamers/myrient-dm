@@ -1,0 +1,14 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "noEmit": false,
+    "outDir": "dist-electron",
+    "rootDir": "electron",
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "lib": ["ESNext"],
+    "types": ["node"]
+  },
+  "include": ["electron/workers/*.ts", "electron/engines/BufferPool.ts"],
+  "exclude": ["node_modules", "dist", "**/*.config.js"]
+}

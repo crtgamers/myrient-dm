@@ -1,0 +1,266 @@
+/**
+ * Formularios: inputs, select, búsqueda.
+ * Depende de tokens.css, reset-base.css, layout.css.
+ */
+
+/* --- Global Modern Inputs & Selects --- */
+.modern-input {
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  padding: 0.625rem 0.875rem;
+  border-radius: var(--radius-md);
+  font-size: var(--text-base);
+  width: 100%;
+  transition: all var(--transition-fast);
+}
+
+/* Dropdown (select) sigue glassmorphism: cristal, blur, borde sutil */
+.modern-select {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur) var(--glass-saturate);
+  -webkit-backdrop-filter: var(--glass-blur) var(--glass-saturate);
+  border: 1px solid var(--glass-border);
+  color: var(--text-primary);
+  padding: 0.625rem 0.875rem;
+  border-radius: var(--radius-md);
+  font-size: var(--text-base);
+  width: 100%;
+  transition: all var(--transition-fast);
+}
+
+.modern-input:focus,
+.modern-select:focus {
+  border-color: var(--primary-color);
+  outline: none;
+  box-shadow: 0 0 0 2px var(--primary-color-alpha);
+}
+.modern-input:focus {
+  background: var(--bg-secondary);
+}
+.modern-select:focus {
+  background: var(--glass-bg);
+}
+.modern-input:focus-visible,
+.modern-select:focus-visible {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+.select-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.modern-select {
+  appearance: none;
+  cursor: pointer;
+  padding-right: 2.25rem;
+}
+
+.select-arrow {
+  position: absolute;
+  right: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: var(--text-muted);
+  transition: color 0.2s;
+}
+
+.select-wrapper:hover .select-arrow {
+  color: var(--primary-color);
+}
+
+.modern-select.mini {
+  padding: 0.375rem 2rem 0.375rem 0.75rem;
+  font-size: var(--text-sm);
+  height: 2rem;
+  width: auto;
+}
+
+.input-add-group {
+  display: flex;
+  gap: var(--spacing-sm);
+  width: 100%;
+}
+
+.input-add-group .modern-input {
+  flex: 1;
+}
+
+.add-btn {
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  min-width: var(--min-touch-target);
+  min-height: var(--min-touch-target);
+  width: 2.75rem;
+  height: 2.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all 0.2s;
+  flex-shrink: 0;
+}
+
+.add-btn:hover {
+  filter: brightness(1.1);
+  transform: scale(1.05);
+}
+
+.add-btn.danger {
+  background: var(--danger-color);
+}
+
+/* Contenedor de Búsqueda */
+.search-wrapper {
+  margin: var(--spacing-md) var(--spacing-lg) var(--spacing-md) var(--spacing-lg);
+}
+
+.search-input-group {
+  display: flex;
+  align-items: center;
+  padding: 0.375rem 0.375rem 0.375rem 1.125rem;
+  border-radius: var(--radius-full);
+  gap: 0.75rem;
+  transition: all var(--transition-normal);
+  box-shadow: var(--shadow-lg);
+}
+
+.search-input-group:focus-within {
+  border-color: var(--primary-color);
+  box-shadow:
+    0 0 0 3px var(--primary-color-alpha),
+    var(--shadow-xl);
+}
+
+.search-icon {
+  color: var(--text-muted);
+}
+
+#search-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: var(--text-primary);
+  font-size: var(--text-base);
+  outline: none;
+  padding: 0.5rem 0;
+}
+#search-input:focus-visible {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+.search-action-btn {
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 0.625rem 1.5rem;
+  border-radius: var(--radius-full);
+  font-weight: 700;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.search-action-btn:hover:not(:disabled) {
+  background: var(--primary-color-hover);
+  box-shadow: var(--shadow-md);
+  transform: scale(1.02);
+}
+
+.search-action-btn:disabled {
+  background: var(--bg-tertiary);
+  color: var(--text-muted);
+  cursor: not-allowed;
+}
+
+/* Buscar en esta carpeta */
+.search-scope-folder-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.35rem 0.6rem;
+  margin-right: 0.25rem;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  background: var(--bg-secondary);
+  color: var(--text-secondary);
+  font-size: var(--text-sm);
+  cursor: pointer;
+  transition:
+    background 0.15s,
+    border-color 0.15s,
+    color 0.15s;
+}
+.search-scope-folder-btn:hover {
+  background: var(--bg-tertiary);
+  border-color: var(--text-muted);
+  color: var(--text-primary);
+}
+.search-scope-folder-btn.active {
+  background: var(--primary-color-alpha);
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+}
+.search-scope-folder-label {
+  white-space: nowrap;
+}
+
+/* Checkbox con clase .form-checkbox (sin .ios-switch) */
+.form-checkbox {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 1.125rem;
+  height: 1.125rem;
+  background: var(--bg-tertiary);
+  border: 2px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  position: relative;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  vertical-align: middle;
+  box-sizing: border-box;
+}
+
+input.form-checkbox {
+  appearance: none !important;
+  -webkit-appearance: none !important;
+}
+
+.form-checkbox:checked {
+  background: var(--primary-color);
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px var(--primary-color-alpha);
+}
+
+.form-checkbox:checked::after {
+  content: '';
+  width: 0.3125rem;
+  height: 0.5625rem;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+  margin-top: -0.0625rem;
+}
+
+.form-checkbox:hover:not(:checked) {
+  border-color: var(--primary-color);
+  background: var(--bg-hover);
+  box-shadow: 0 0 0 3px var(--primary-color-alpha);
+}
+@media (max-width: 640px) {
+  .search-scope-folder-label {
+    display: none;
+  }
+  .search-scope-folder-btn {
+    padding: 0.35rem 0.5rem;
+  }
+}

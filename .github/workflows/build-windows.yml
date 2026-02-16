@@ -1,0 +1,36 @@
+# Build Windows (portable) en GitHub Actions
+name: Compilar para Windows
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+  workflow_dispatch:
+
+jobs:
+  build-windows:
+    name: Windows modo portable
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build Windows (portable)
+        run: npm run build:win
+
+      - name: Upload portable executable
+        uses: actions/upload-artifact@v4
+        with:
+          name: myrient-dm-windows-portable
+          path: dist-electron/*.exe

@@ -1,0 +1,477 @@
+/**
+ * Media queries responsive: viewports bajos, 4:3, ultrawide, móvil, XL/XXL.
+ * Depende de layout.css, components (folders, files, downloads, settings, filters, logs).
+ */
+
+/* Viewports bajos (p. ej. 1360×768, 1280×720) */
+@media (max-height: 800px) {
+  :root {
+    --titlebar-height: 2.75rem;
+  }
+
+  .titlebar {
+    padding: 0.25rem var(--spacing-sm);
+  }
+
+  .titlebar-btn {
+    width: 2rem;
+    height: 2rem;
+    min-width: var(--min-touch-target);
+    min-height: var(--min-touch-target);
+    margin: var(--spacing-xs);
+    padding: 0;
+    font-size: var(--text-base);
+  }
+
+  .titlebar-btn svg {
+    width: var(--text-md);
+    height: var(--text-md);
+  }
+
+  .speed-indicator {
+    padding: var(--spacing-xs) var(--spacing-sm);
+    font-size: var(--text-sm);
+    min-width: 6.25rem;
+  }
+
+  #header {
+    margin-top: var(--spacing-sm);
+  }
+
+  .search-wrapper {
+    margin: var(--spacing-sm) var(--spacing-lg);
+  }
+
+  .breadcrumb-nav {
+    padding: var(--spacing-xs) var(--spacing-lg);
+  }
+
+  #content-container {
+    padding: 0 var(--spacing-lg) var(--spacing-lg) var(--spacing-lg);
+    margin-top: var(--spacing-xs);
+  }
+
+  .section-header {
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .section-header h2,
+  .files-header h2 {
+    font-size: var(--text-md);
+  }
+
+  .folders-grid {
+    gap: var(--spacing-sm);
+  }
+
+  .folder-btn {
+    padding: 0.75rem;
+    gap: 0.75rem;
+  }
+
+  .files-header,
+  .downloads-header {
+    margin-bottom: var(--spacing-sm);
+  }
+
+  th,
+  td {
+    padding: 0.625rem 0.75rem;
+    font-size: var(--text-sm);
+  }
+
+  .download-row {
+    height: 3.5rem;
+  }
+
+  .icon-btn {
+    width: var(--min-touch-target);
+    height: var(--min-touch-target);
+  }
+
+  .empty-state {
+    padding: 2.5rem var(--spacing-md);
+  }
+
+  .empty-state h3 {
+    font-size: var(--text-lg);
+  }
+
+  .settings-panel,
+  .logs-panel {
+    max-height: 90vh;
+  }
+
+  .settings-body,
+  .settings-header {
+    padding: var(--spacing-md);
+  }
+
+  .sidebar .sidebar__header {
+    height: 4.5rem;
+    padding: var(--spacing-md);
+  }
+
+  .sidebar .sidebar__nav {
+    gap: 0.75rem;
+  }
+
+  .sidebar .sidebar__nav-item {
+    padding: var(--spacing-sm) 0.625rem;
+  }
+
+  .sidebar .sidebar__nav-icon {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+
+  .filters-panel .filters-header {
+    padding: 1rem 1.25rem;
+  }
+
+  .filters-footer {
+    padding: 0.75rem 1.25rem;
+  }
+}
+
+/* Relación 4:3 (p. ej. 1024×768) */
+@media (max-aspect-ratio: 4/3) {
+  .filters-panel {
+    width: max(34%, min(26.25rem, 45vw));
+    min-width: 34%;
+    max-width: 90vw;
+  }
+}
+
+/* Ultrawide (21:9) */
+@media (min-aspect-ratio: 21/9) {
+  .filters-panel {
+    width: min(30rem, 30vw);
+    min-width: min(17.5rem, 22vw);
+    max-width: 30rem;
+  }
+}
+
+/* Vertical (9:16, móvil portrait) */
+@media (max-aspect-ratio: 9/16) {
+  .filters-panel {
+    width: 100%;
+    min-width: 100%;
+    max-width: 100%;
+    left: 0;
+    right: 0;
+    box-shadow: 0 -4px 20px var(--overlay-bg-20);
+  }
+}
+
+/* Viewports muy bajos */
+@media (max-height: 650px) {
+  :root {
+    --titlebar-height: 2.5rem;
+  }
+
+  .titlebar {
+    padding: 0.25rem var(--spacing-md);
+  }
+
+  .titlebar-btn {
+    width: 1.75rem;
+    height: 1.75rem;
+    min-width: var(--min-touch-target);
+    min-height: var(--min-touch-target);
+    margin: var(--spacing-xs);
+    padding: 0;
+    font-size: var(--text-sm);
+  }
+
+  .titlebar-btn svg {
+    width: var(--text-base);
+    height: var(--text-base);
+  }
+
+  .speed-indicator {
+    padding: var(--spacing-xs) var(--spacing-sm);
+    font-size: var(--text-2xs);
+    min-width: 5rem;
+    max-width: 11.25rem;
+  }
+
+  .filters-panel {
+    max-width: 95vw;
+    width: min(23.75rem, 95vw);
+  }
+
+  .filters-panel .filters-header {
+    padding: 0.625rem 1rem;
+    flex-shrink: 0;
+  }
+
+  .filters-panel .filters-header h2 {
+    font-size: var(--text-base);
+  }
+
+  .filters-panel .filters-footer {
+    padding: var(--spacing-sm) var(--spacing-md);
+    flex-shrink: 0;
+  }
+
+  .filters-panel [class*='filters-body'] {
+    padding: 0.75rem 1rem;
+    gap: var(--spacing-md);
+    min-height: 7.5rem;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* Resolución mínima 640px */
+@media (max-width: 640px) {
+  :root {
+    --titlebar-height: 2.75rem;
+    --sidebar-width: 15rem;
+    --spacing-lg: 1rem;
+  }
+
+  .titlebar-content {
+    gap: var(--spacing-sm);
+  }
+
+  .brand .titlebar-title {
+    font-size: var(--text-sm);
+    letter-spacing: 1px;
+  }
+
+  .speed-indicator {
+    min-width: 5.625rem;
+    max-width: 8.75rem;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    font-size: var(--text-2xs);
+  }
+
+  .download-name {
+    max-width: 6.25rem;
+  }
+
+  #content-container {
+    padding: 0 var(--spacing-md) var(--spacing-md) var(--spacing-md);
+    margin-right: 0;
+  }
+
+  .empty-state {
+    padding: 1.5rem 1rem;
+    margin: 0.75rem;
+  }
+
+  .empty-state h3 {
+    font-size: var(--text-lg);
+  }
+
+  .search-wrapper {
+    margin: var(--spacing-sm) var(--spacing-md);
+  }
+
+  .breadcrumb-nav {
+    padding: 0 var(--spacing-md);
+    flex-wrap: wrap;
+  }
+
+  .breadcrumb-list {
+    min-width: 0;
+  }
+
+  .folders-grid:not(.folders-list-view) {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: var(--spacing-sm);
+  }
+
+  .folder-btn {
+    padding: 0.75rem;
+    gap: 0.75rem;
+  }
+
+  .files-header,
+  .downloads-header {
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
+  }
+
+  .header-actions {
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
+  }
+
+  .btn-action-header {
+    min-height: 2.5rem;
+    min-width: 5rem;
+    padding: 0.5rem 0.75rem;
+    font-size: var(--text-sm);
+  }
+
+  .btn-action-header span:last-of-type {
+    white-space: nowrap;
+  }
+
+  .actions-group .icon-btn {
+    width: var(--min-touch-target);
+    height: var(--min-touch-target);
+  }
+
+  .checkbox-col {
+    min-width: 2.25rem;
+  }
+
+  .downloads-table .name-col,
+  .downloads-table .name-cell,
+  .table-container table .name-col,
+  .table-container table .name-cell {
+    min-width: 6.25rem;
+    max-width: 13.75rem;
+  }
+
+  .settings-panel,
+  .logs-panel {
+    width: 95vw;
+    max-width: min(37.5rem, 100vw);
+    min-width: min(20rem, 100vw);
+    max-height: 90dvh;
+  }
+
+  .table-container td:nth-child(1) {
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  .table-container td:nth-child(2) {
+    max-width: 12rem;
+  }
+
+  .filters-panel {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .header-actions {
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
+  }
+
+  .btn-action-header {
+    min-height: 2.375rem;
+    min-width: 6rem;
+    padding: 0.5rem 0.625rem;
+    font-size: var(--text-sm);
+  }
+
+  .filters-panel {
+    width: 100%;
+  }
+
+  .tag-panels {
+    grid-template-columns: 1fr;
+  }
+
+  .downloads-panel {
+    width: calc(100vw - 3rem);
+    right: 1.5rem;
+    bottom: 5.75rem;
+  }
+
+  .folders-grid:not(.folders-list-view) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--spacing-sm);
+  }
+}
+
+@media (max-width: 480px) {
+  .header-buttons {
+    flex-wrap: wrap;
+  }
+
+  .favorites-btn,
+  .downloads-btn,
+  .filters-btn {
+    flex: 1;
+    justify-content: center;
+  }
+
+  .search-container {
+    padding: 0 1rem;
+  }
+
+  .downloads-table .checkbox-col,
+  .table-container table .checkbox-col {
+    min-width: 2rem;
+  }
+
+  .downloads-table .name-col,
+  .downloads-table .name-cell,
+  .table-container table .name-col,
+  .table-container table .name-cell {
+    min-width: 5rem;
+    max-width: 10rem;
+  }
+
+  .download-name {
+    max-width: 5.625rem;
+  }
+
+  .download-name.scrolling-text {
+    max-width: 4.375rem;
+  }
+
+  .speed-indicator {
+    max-width: min(7.5rem, 45vw);
+    min-width: 4.5rem;
+  }
+}
+
+/* Viewport muy estrecho (360px) */
+@media (max-width: 360px) {
+  .breadcrumb-nav {
+    padding: 0 var(--spacing-sm);
+  }
+
+  .search-wrapper {
+    margin: var(--spacing-xs) var(--spacing-sm);
+  }
+
+  #content-container {
+    padding: 0 var(--spacing-sm) var(--spacing-sm) var(--spacing-sm);
+  }
+
+  .empty-state {
+    padding: 1rem var(--spacing-sm);
+    margin: var(--spacing-sm);
+  }
+
+  .empty-state h3 {
+    font-size: var(--text-md);
+  }
+
+  .downloads-table .name-col,
+  .downloads-table .name-cell,
+  .table-container table .name-col,
+  .table-container table .name-cell {
+    min-width: 4.5rem;
+    max-width: 8.75rem;
+  }
+}
+
+/* XL (1921–2560) */
+@media (min-width: 1921px) {
+  #content-container {
+    max-width: var(--content-max-width);
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/* XXL (≥2561) */
+@media (min-width: 2561px) {
+  #content-container {
+    max-width: var(--content-max-width);
+    margin-left: auto;
+    margin-right: auto;
+  }
+}

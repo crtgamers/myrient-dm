@@ -1,0 +1,8 @@
+/**
+ * Paneles: filtros, descargas, cola, logs.
+ * Depende de tokens, reset-base, layout, utilities.
+ *
+ * Los bloques de paneles (Panel de Descargas, Panel de Filtros, queue-state-filter,
+ * logs-overlay, etc.) siguen en components.css por dependencias y media queries.
+ * Se pueden extraer aquí en un refactor posterior.
+ */

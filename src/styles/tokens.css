@@ -1,0 +1,189 @@
+/**
+ * Design tokens (variables CSS).
+ * Base para temas; body.light-mode sobrescribe en themes.css.
+ *
+ * Contraste: pares --text-primary, --text-secondary, --text-muted sobre
+ * --bg-main, --bg-secondary y --glass-bg cumplen WCAG 1.4.3 AA (≥ 4.5:1).
+ * Ratios detallados en los comentarios de cada sección de texto y en themes.css.
+ */
+:root {
+  font-family:
+    'Inter',
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    Roboto,
+    Oxygen,
+    Ubuntu,
+    Cantarell,
+    'Open Sans',
+    'Helvetica Neue',
+    sans-serif;
+  line-height: 1.6;
+  font-weight: 400;
+
+  /* ========================================
+     COLOR PALETTE (Emerald & Frost)
+     ======================================== */
+  --primary-color: #10b981;
+  --primary-color-hover: #059669;
+  --primary-color-alpha: rgba(16, 185, 129, 0.2);
+  --primary-color-rgb: 16, 185, 129;
+  --primary-glow: 0 0 1.25rem rgba(16, 185, 129, 0.3);
+
+  /* Glass Surface Tokens (reducidos para rendimiento en Electron: 6px/120%) */
+  --glass-bg: rgba(17, 24, 39, 0.75);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --glass-blur: blur(6px);
+  --glass-saturate: saturate(120%);
+  --overlay-blur: blur(4px);
+
+  /* Backgrounds - Dark Mode Default */
+  --bg-main: #0b0f1a;
+  --bg-secondary: rgba(31, 41, 55, 0.5);
+  --bg-tertiary: rgba(55, 65, 81, 0.4);
+  --bg-hover: rgba(55, 65, 81, 0.6);
+
+  /* Text — WCAG 1.4.3 AA (contraste ≥ 4.5:1 texto normal, ≥ 3:1 texto grande).
+   * Ratios validados sobre --bg-main (dark):
+   *   --text-primary (#f9fafb): ~17.8:1
+   *   --text-secondary (#9ca3af): ~7.2:1
+   *   --text-muted (#8b92a0): ~5.5:1
+   * Sobre --glass-bg / --bg-secondary el fondo efectivo es similar; ratios se mantienen ≥ 4.5:1. */
+  --text-primary: #f9fafb;
+  --text-secondary: #9ca3af;
+  --text-muted: #8b92a0;
+
+  /* Borders */
+  --border-color: rgba(75, 85, 99, 0.3);
+  --border-subtle: rgba(31, 41, 55, 0.2);
+
+  /* Functional Colors */
+  --danger-color: #ef4444;
+  --danger-color-hover: #dc2626;
+  --danger-color-rgb: 239, 68, 68;
+  --warning-color: #f59e0b;
+  --warning-color-rgb: 245, 158, 11;
+  --info-color: #3b82f6;
+  --info-color-rgb: 59, 130, 246;
+  --info-color-alpha: rgba(59, 130, 246, 0.1);
+  --success-color: #10b981;
+  --status-merging: #a78bfa;
+  --status-merging-alpha: rgba(139, 92, 246, 0.1);
+
+  /* Alpha variants (evitar hardcodeo de rgba en componentes) */
+  --primary-color-alpha-08: rgba(16, 185, 129, 0.08);
+  --primary-color-alpha-10: rgba(16, 185, 129, 0.1);
+  --primary-color-alpha-12: rgba(16, 185, 129, 0.12);
+  --primary-color-alpha-30: rgba(16, 185, 129, 0.3);
+  --danger-color-alpha-10: rgba(239, 68, 68, 0.1);
+  --danger-color-alpha-12: rgba(239, 68, 68, 0.12);
+  --warning-color-alpha-10: rgba(245, 158, 11, 0.1);
+  --warning-color-alpha-12: rgba(245, 158, 11, 0.12);
+  --warning-color-alpha-18: rgba(245, 158, 11, 0.18);
+  --warning-color-alpha-22: rgba(245, 158, 11, 0.22);
+  --info-color-alpha-12: rgba(59, 130, 246, 0.12);
+  --info-color-alpha-25: rgba(59, 130, 246, 0.25);
+  --danger-color-alpha-15: rgba(239, 68, 68, 0.15);
+  --danger-color-alpha-22: rgba(239, 68, 68, 0.22);
+  --danger-color-alpha-35: rgba(239, 68, 68, 0.35);
+  --overlay-bg: rgba(0, 0, 0, 0.45);
+  --overlay-bg-05: rgba(0, 0, 0, 0.05);
+  --overlay-bg-10: rgba(0, 0, 0, 0.1);
+  --overlay-bg-20: rgba(0, 0, 0, 0.2);
+  --overlay-bg-30: rgba(0, 0, 0, 0.3);
+  --overlay-bg-70: rgba(0, 0, 0, 0.7);
+  --overlay-bg-80: rgba(0, 0, 0, 0.8);
+  --overlay-bg-90: rgba(0, 0, 0, 0.9);
+  --surface-overlay-02: rgba(255, 255, 255, 0.02);
+  --surface-overlay-05: rgba(255, 255, 255, 0.05);
+  --surface-overlay-10: rgba(255, 255, 255, 0.1);
+  --surface-overlay-60: rgba(255, 255, 255, 0.6);
+
+  /* Logs / Terminal (panel de consola; opcional usar en components) */
+  --logs-bg: #05070a;
+  --log-level-info: #61afef;
+  --log-level-warn: #e5c07b;
+  --log-level-warn-bg: #282c34;
+  --log-level-error: #e06c75;
+  --log-level-debug: #56b6c2;
+  --log-message: #abb2bf;
+  --log-meta: #5c6370;
+  --log-scope: #c678dd;
+  --log-level-badge-bg: #3e4451;
+  --log-entry-bg: rgba(255, 255, 255, 0.02);
+  --log-entry-bg-hover: rgba(255, 255, 255, 0.05);
+
+  /* ========================================
+     SPACING SYSTEM (rem; base 1rem)
+     ======================================== */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+  --spacing-2xl: 3rem;
+
+  /* ========================================
+     BORDER RADIUS (rem)
+     ======================================== */
+  --radius-sm: 0.375rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --radius-2xl: 1.5rem;
+  --radius-full: 9999px;
+
+  /* ========================================
+     TIPOGRAFÍA (rem)
+     ======================================== */
+  --text-2xs: 0.6875rem;
+  --text-xs: 0.625rem;
+  --text-sm: 0.75rem;
+  --text-base: 0.875rem;
+  --text-md: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+
+  /* ========================================
+     SHADOWS & GLOWS (Fase 10.2: jerarquía 0–4)
+     Nivel 0 = sin sombra; 1 = --shadow-sm; 2 = --shadow-md; 3 = --shadow-lg; 4 = --shadow-xl/2xl.
+     Glow (--primary-glow, --shadow-glow): solo FAB (.floating-downloads-btn) y búsqueda focus.
+     Listas, cards, botones secundarios: sm o md. Modales/paneles: lg o xl.
+     ======================================== */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 0.25rem 0.375rem -1px rgba(0, 0, 0, 0.1), 0 2px 0.25rem -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 0.25rem 0.375rem -2px rgba(0, 0, 0, 0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+  --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  --shadow-glow: 0 0 15px var(--primary-color-alpha);
+
+  /* ========================================
+     DIMENSIONS (rem)
+     ======================================== */
+  --titlebar-height: 3.5rem;
+  --header-height: auto;
+  --search-height: 3.75rem;
+  --sidebar-width: 16.25rem;
+  --sidebar-collapsed-width: 5rem;
+  --bp-xxs: 360px;
+  --bp-xs: 640px;
+  --bp-s: 960px;
+  --bp-m: 1280px;
+  --bp-l: 1920px;
+  --bp-xl: 2560px;
+  --bp-xxl: 2561px;
+  --bp-sm: 768px;
+  --bp-md: 1024px;
+  --bp-lg: 1280px;
+  --content-max-width: 100rem;
+  --min-touch-target: 2.75rem;
+
+  /* ========================================
+     TRANSITIONS
+     ======================================== */
+  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}

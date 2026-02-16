@@ -1,0 +1,16 @@
+/**
+ * Punto de entrada de estilos globales (Vue frontend).
+ * Orden: tokens → reset-base → layout → components/* (forms antes que table) → utilities → components.css (resto) → themes.
+ * La paleta por defecto es "Emerald & Frost" (dark); body.light-mode aplica tema claro.
+ */
+@import './styles/tokens.css';
+@import './styles/reset-base.css';
+@import './styles/layout.css';
+@import './styles/components/forms.css';
+@import './styles/components/buttons.css';
+@import './styles/components/table.css';
+@import './styles/components/panels.css';
+@import './styles/components/modals.css';
+@import './styles/utilities.css';
+@import './styles/components.css';
+@import './styles/themes.css';

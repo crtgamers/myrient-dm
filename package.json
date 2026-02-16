@@ -1,0 +1,170 @@
+{
+  "name": "myrient-dm",
+  "private": true,
+  "version": "1.5.0",
+  "description": "Myrient Download Manager - Explorador y gestor de descargas para Myrient",
+  "author": "Bastian Aguirre (CRT Gamers Chile), Pablo M. Iglesias",
+  "license": "GPL-3.0-or-later",
+  "type": "module",
+  "main": "dist-electron/main.js",
+  "engines": {
+    "node": "24.11.1"
+  },
+  "scripts": {
+    "dev": "npm run build:electron-workers && vite",
+    "build": "npm run build-icon && vite build && npm run build:electron-workers && npx tsx scripts/build-db-7z.ts && electron-builder && npx tsx scripts/rename-win-output.ts && npx tsx scripts/generate-latest-yml.ts",
+    "build:electron-workers": "node -e \"require('fs').mkdirSync('dist-electron', {recursive: true})\" && node node_modules/typescript/bin/tsc -p tsconfig.workers.json",
+    "build:linux": "npm run build-icon && vite build && npm run build:electron-workers && npx tsx scripts/build-db-7z.ts && electron-builder --linux --publish never",
+    "build:mac": "npm run build-icon && vite build && npm run build:electron-workers && npx tsx scripts/build-db-7z.ts && electron-builder --mac --arm64 --publish never && electron-builder --mac --x64 --publish never",
+    "build:win": "npm run build-icon && vite build && npm run build:electron-workers && npx tsx scripts/build-db-7z.ts && electron-builder --win --publish never && npx tsx scripts/rename-win-output.ts && npx tsx scripts/generate-latest-yml.ts",
+    "build-icon": "npx tsx scripts/build-icon.ts",
+    "postinstall": "electron-builder install-app-deps",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write \"**/*.{js,ts,tsx,vue,json,md,css,html}\" --ignore-path .prettierignore",
+    "format:check": "prettier --check \"**/*.{js,ts,tsx,vue,json,md,css,html}\" --ignore-path .prettierignore",
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
+    "test:unit": "node --experimental-vm-modules node_modules/jest/bin/jest.js --testPathPatterns=__tests__/unit",
+    "test:integration": "node --experimental-vm-modules node_modules/jest/bin/jest.js --testPathPatterns=__tests__/integration",
+    "test:acceptance": "node --experimental-vm-modules node_modules/jest/bin/jest.js __tests__/acceptance",
+    "test:watch": "node --experimental-vm-modules node_modules/jest/bin/jest.js --watch",
+    "test:coverage": "node --experimental-vm-modules node_modules/jest/bin/jest.js --coverage",
+    "check-cjs": "npx tsx scripts/check-cjs-usage.ts",
+    "validate-locales": "npx tsx scripts/validate-locales.ts",
+    "validate-i18n-keys": "npx tsx scripts/validate-i18n-keys.ts",
+    "validate-i18n-keys:orphans": "npx tsx scripts/validate-i18n-keys.ts --orphans",
+    "inspect-asar": "npx tsx scripts/inspect-asar.ts",
+    "depcheck": "npx depcheck",
+    "typecheck": "node node_modules/typescript/bin/tsc --noEmit",
+    "typecheck:vue": "vue-tsc --noEmit",
+    "typecheck:all": "npm run typecheck && npm run typecheck:vue"
+  },
+  "dependencies": {
+    "7zip-bin": "^5.2.0",
+    "better-sqlite3": "12.5.0",
+    "electron-log": "^5.4.3"
+  },
+  "devDependencies": {
+    "@electron/asar": "^4.0.1",
+    "@eslint/js": "^10.0.1",
+    "@types/better-sqlite3": "^7.6.13",
+    "@types/jest": "^30.0.0",
+    "@types/node": "^24.0.0",
+    "@typescript-eslint/parser": "^8.55.0",
+    "@vitejs/plugin-vue": "^6.0.4",
+    "electron": "^40.2.1",
+    "electron-builder": "^26.7.0",
+    "electron-updater": "^6.7.3",
+    "eslint": "^10.0.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.5",
+    "eslint-plugin-vue": "^10.7.0",
+    "globals": "^17.3.0",
+    "jest": "^30.2.0",
+    "lucide-vue-next": "^0.563.0",
+    "prettier": "^3.8.1",
+    "ts-jest": "^29.4.6",
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.3",
+    "vite": "^7.3.0",
+    "vite-plugin-electron": "^0.29.0",
+    "vite-plugin-electron-renderer": "^0.14.6",
+    "vue": "^3.5.28",
+    "vue-eslint-parser": "^10.2.0",
+    "vue-i18n": "^11.2.8",
+    "vue-tsc": "^3.2.4",
+    "zod": "^4.3.6"
+  },
+  "build": {
+    "appId": "com.user.myrientdmapp",
+    "productName": "Myrient Download Manager",
+    "asar": true,
+    "electronLanguages": [
+      "en-US",
+      "es",
+      "es-419"
+    ],
+    "publish": {
+      "provider": "github",
+      "owner": "crtgamers",
+      "repo": "myrient-dm",
+      "vPrefixedTagName": true
+    },
+    "beforePack": "scripts/prune-app-deps.cjs",
+    "asarUnpack": [
+      "dist-electron/workers/**/*",
+      "node_modules/7zip-bin/**/*"
+    ],
+    "directories": {
+      "output": "dist-electron"
+    },
+    "files": [
+      "dist/**",
+      "dist-electron/**",
+      "!dist-electron/win-unpacked",
+      "!dist-electron/win-unpacked/**",
+      "!dist-electron/myrient-dm-win",
+      "!dist-electron/myrient-dm-win/**",
+      "!dist-electron/mac",
+      "!dist-electron/mac/**",
+      "!dist-electron/mac-arm64",
+      "!dist-electron/mac-arm64/**",
+      "!dist-electron/linux-unpacked",
+      "!dist-electron/linux-unpacked/**",
+      "!dist-electron/*.exe",
+      "!dist-electron/*.dmg",
+      "!dist-electron/*.zip",
+      "!dist-electron/*.AppImage",
+      "!dist-electron/*.deb",
+      "!dist-electron/builder-effective-config.yaml",
+      "!dist-electron/.asar-inspect-tmp",
+      "!dist-electron/.asar-inspect-tmp/**",
+      "shared/**"
+    ],
+    "extraResources": [
+      {
+        "from": "resources",
+        "to": "",
+        "filter": [
+          "**/*.7z",
+          "**/app-update.yml"
+        ]
+      }
+    ],
+    "win": {
+      "icon": "public/icon.png",
+      "executableName": "myrient-dm",
+      "target": [
+        {
+          "target": "portable",
+          "arch": [
+            "x64"
+          ]
+        },
+        {
+          "target": "zip",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+    },
+    "mac": {
+      "target": [
+        "dmg",
+        "zip"
+      ],
+      "category": "public.app-category.utilities",
+      "identity": null
+    },
+    "linux": {
+      "target": [
+        "AppImage",
+        "deb"
+      ],
+      "executableName": "myrient-dm",
+      "category": "Utility",
+      "maintainer": "Bastian Aguirre (CRT Gamers Chile) <noreply@example.com>"
+    }
+  }
+}

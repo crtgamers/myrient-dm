@@ -1,0 +1,8 @@
+# Configuración del actualizador (electron-updater).
+# Necesario para que "Buscar actualizaciones" funcione en la app empaquetada (portable/zip).
+# electron-builder no genera este archivo para targets "portable" y "zip"; se incluye vía extraResources.
+provider: github
+owner: crtgamers
+repo: myrient-dm
+updaterCacheDirName: myrient-dm-updater
+vPrefixedTagName: true

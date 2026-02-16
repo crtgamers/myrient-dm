@@ -1,0 +1,153 @@
+/**
+ * Botones: nav-action, icon-action, etc.
+ * Depende de tokens.css, reset-base.css.
+ */
+
+/* Botones de acción minimalistas (header, breadcrumb) */
+.nav-action-btn {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  font-size: var(--text-sm);
+  font-weight: 600;
+  transition: all var(--transition-fast);
+  box-shadow: var(--shadow-sm);
+}
+
+.nav-action-btn:hover {
+  background: var(--bg-hover);
+  color: var(--primary-color);
+  border-color: var(--primary-color);
+  transform: translateY(-1px);
+}
+
+.nav-action-btn.active {
+  background: var(--primary-color);
+  border-color: var(--primary-color);
+  color: white;
+}
+
+.nav-action-btn .badge {
+  background: var(--overlay-bg-20);
+  padding: 0.125rem 0.375rem;
+  border-radius: var(--radius-sm);
+  font-size: var(--text-xs);
+}
+
+.nav-action-btn.mini {
+  padding: 0.25rem 0.75rem;
+  font-size: var(--text-2xs);
+  height: 1.75rem;
+  background: var(--bg-tertiary);
+  border-radius: var(--radius-full);
+}
+
+/* Botones de icono (filas de descarga/archivos) */
+.icon-btn {
+  min-width: var(--min-touch-target);
+  min-height: var(--min-touch-target);
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary);
+}
+
+.icon-btn:hover {
+  background: var(--bg-hover);
+  color: var(--text-primary);
+  transform: scale(1.1);
+}
+
+.icon-btn.btn-pause {
+  color: var(--warning-color);
+  border-color: rgba(var(--warning-color-rgb), 0.4);
+}
+.icon-btn.btn-pause:hover {
+  background: var(--warning-color-alpha-18);
+  color: var(--warning-color);
+}
+.icon-btn.btn-resume {
+  color: var(--success-color);
+  border-color: rgba(var(--primary-color-rgb), 0.4);
+}
+.icon-btn.btn-resume:hover {
+  background: var(--primary-color-alpha);
+  color: var(--success-color);
+}
+.icon-btn.btn-retry {
+  color: var(--info-color);
+  border-color: rgba(var(--info-color-rgb), 0.4);
+}
+.icon-btn.btn-retry:hover {
+  background: var(--info-color-alpha);
+  color: var(--info-color);
+}
+.icon-btn.btn-folder {
+  color: var(--primary-color);
+  border-color: rgba(var(--primary-color-rgb), 0.4);
+}
+.icon-btn.btn-folder:hover {
+  background: var(--primary-color-alpha);
+  color: var(--primary-color);
+}
+.icon-btn.btn-confirm {
+  color: var(--success-color);
+  border-color: rgba(var(--primary-color-rgb), 0.4);
+}
+.icon-btn.btn-confirm:hover {
+  background: var(--primary-color-alpha);
+  color: var(--success-color);
+}
+.icon-btn.btn-cancel {
+  color: var(--warning-color);
+  border-color: rgba(var(--warning-color-rgb), 0.4);
+}
+.icon-btn.btn-cancel:hover {
+  background: var(--warning-color-alpha-18);
+  color: var(--warning-color);
+}
+.icon-btn.btn-delete {
+  color: var(--text-muted);
+  border-color: var(--border-color);
+}
+.icon-btn.btn-delete:hover {
+  background: var(--danger-color-alpha-15);
+  color: var(--danger-color);
+  border-color: rgba(var(--danger-color-rgb), 0.4);
+}
+
+/* Botón cerrar panel */
+.btn-close-panel {
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  cursor: pointer;
+  padding: var(--spacing-sm);
+  min-width: var(--min-touch-target);
+  min-height: var(--min-touch-target);
+  border-radius: var(--radius-md);
+  transition: all var(--transition-fast);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-close-panel:hover {
+  background: var(--danger-color-alpha-12);
+  color: var(--danger-color);
+  border-color: var(--danger-color-alpha-35);
+  transform: scale(1.05);
+}

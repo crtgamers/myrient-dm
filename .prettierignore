@@ -1,0 +1,29 @@
+# Dependencias
+node_modules
+package-lock.json
+
+# Build
+dist
+dist-electron
+build
+
+# Base de datos
+*.db
+*.sqlite
+*.sqlite3
+
+# Archivos comprimidos
+*.7z
+*.zip
+*.tar
+*.gz
+
+# Logs
+*.log
+
+# Archivos de configuración del sistema
+.DS_Store
+Thumbs.db
+
+# Archivos de documentación
+*.md

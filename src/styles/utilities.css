@@ -1,0 +1,299 @@
+/**
+ * Utilidades: skeleton, animaciones globales, skip-link, focus-visible.
+ * Depende de tokens.css y reset-base.css.
+ */
+
+/* ========== Skeleton ========== */
+.skeleton {
+  background: var(--bg-tertiary);
+  border-radius: var(--radius-sm);
+  position: relative;
+  overflow: hidden;
+}
+
+.skeleton::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.05) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer-fast 1.5s infinite linear;
+}
+
+body.light-mode .skeleton {
+  background-image: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(0, 0, 0, 0.03) 50%,
+    transparent 100%
+  );
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes shimmer-fast {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.skeleton-text {
+  height: 0.75rem;
+  margin-bottom: 0.5rem;
+  width: 100%;
+}
+.skeleton-text.short {
+  width: 60%;
+}
+.skeleton-title {
+  height: 1.5rem;
+  margin-bottom: 1rem;
+  width: 40%;
+}
+.skeleton-circle {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.skeleton-rect {
+  height: 3rem;
+  width: 100%;
+  border-radius: var(--radius-md);
+}
+
+.skeleton-shimmer {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.05) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer-fast 1.5s infinite linear;
+}
+
+.search-loading-skeletons {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  margin-top: 1.25rem;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.skeleton-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ========== Focus visible (WCAG 2.4.7) ========== */
+:focus-visible {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+/* ========== Skip link ========== */
+.skip-link {
+  position: absolute;
+  top: -6.25rem;
+  left: 0;
+  background: var(--primary-color);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  z-index: 10000;
+  transition: top 0.2s;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+/* ========== Animaciones: vista, panel, entrada, modal, toast ========== */
+.view-fade-enter-active,
+.view-fade-leave-active {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.view-fade-enter-from {
+  opacity: 0;
+  transform: translateY(10px) scale(0.98);
+}
+
+.view-fade-leave-to {
+  opacity: 0;
+  transform: translateY(-10px) scale(1.02);
+}
+
+.panel-slide-enter-active,
+.panel-slide-leave-active {
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.panel-slide-enter-from,
+.panel-slide-leave-to {
+  transform: translateX(100%);
+}
+
+@keyframes entrance {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-in {
+  animation: entrance 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.folder-wrapper {
+  animation: entrance 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+tbody tr {
+  animation: entrance 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+tbody tr:nth-child(1) {
+  animation-delay: 0.05s;
+}
+tbody tr:nth-child(2) {
+  animation-delay: 0.1s;
+}
+tbody tr:nth-child(3) {
+  animation-delay: 0.15s;
+}
+tbody tr:nth-child(4) {
+  animation-delay: 0.2s;
+}
+tbody tr:nth-child(5) {
+  animation-delay: 0.25s;
+}
+
+tbody tr:nth-child(n + 11) {
+  animation: none;
+}
+
+.hover-lift {
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px) scale(1.02);
+}
+
+.modal-scale-enter-active,
+.modal-scale-leave-active {
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.modal-scale-enter-from,
+.modal-scale-leave-to {
+  opacity: 0;
+  transform: translate(-50%, -45%) scale(0.95);
+}
+
+.toast-slide-enter-active {
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.toast-slide-leave-active {
+  transition: all 0.3s ease-in;
+  position: absolute;
+}
+
+.toast-slide-enter-from {
+  transform: translateX(100%) scale(0.9);
+  opacity: 0;
+}
+
+.toast-slide-leave-to {
+  transform: translateX(100%);
+  opacity: 0;
+}
+
+.toast-slide-move {
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes pulse-subtle {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.pulse-hover:hover {
+  animation: pulse-subtle 2s infinite ease-in-out;
+}
+
+@keyframes app-reveal {
+  from {
+    clip-path: inset(50% 50% 50% 50%);
+    opacity: 0;
+  }
+  to {
+    clip-path: inset(0% 0% 0% 0%);
+    opacity: 1;
+  }
+}
+
+#container {
+  animation: app-reveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}

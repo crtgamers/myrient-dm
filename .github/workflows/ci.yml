@@ -1,0 +1,46 @@
+# CI: lint, formato y tests en cada push y PR
+name: CI
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
+jobs:
+  lint-and-test:
+    name: Lint, format & tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Preparar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: ".nvmrc"
+          cache: "npm"  
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Validate locales
+        run: npm run validate-locales
+
+      - name: Validate i18n keys
+        run: npm run validate-i18n-keys
+
+      - name: Typecheck
+        run: npm run typecheck:all
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Format check
+        run: npm run format:check
+
+      - name: Unit tests
+        run: npm run test:unit
+
+      - name: Integration tests
+        run: npm run test:integration
